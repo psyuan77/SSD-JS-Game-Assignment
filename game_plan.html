@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Plan</title>
+    <link rel="stylesheet" href="/styles/game_plan_style.css" />
+  </head>
+  <body>
+    <header><h1>Game Plan</h1></header>
+    <main>
+      <div class="wrapper">
+        <!--Game description  -->
+        <article class="article1">
+          <h2>Game High-Level description</h2>
+
+          <h3>1. Game Title</h3>
+          <ul>
+            <li>"Catching me !"</li>
+          </ul>
+          <h3>2. Description</h3>
+
+          <p>
+            The player controls a basket at the bottom of the screen. Balls fall
+            from the top, and the goal is to catch as many balls as possible
+            within a set time. Allow mutipule players take turns to catch
+            falling balls,they compete against each other, and the player with
+            the highest score at the end wins.
+          </p>
+        </article>
+
+        <article>
+          <h2>High-Level Design Statement</h2>
+
+          <h3>1. Theme</h3>
+          <ul>
+            <li>Colorful cartoon style.</li>
+          </ul>
+          <h3>2. Layout</h3>
+          <ul>
+            <li>Fixed layout.</li>
+            <li>Score and timer display at the top.</li>
+            <li>Player displayed in the top left corner.</li>
+          </ul>
+          <h3>3. Color of the balls</h3>
+          <ul>
+            <li>Use vibrant colors for regular balls.</li>
+          </ul>
+        </article>
+
+        <article>
+          <h2>Player Experience</h2>
+
+          <section>
+            <h3>1. Player Setup</h3>
+            <ul>
+              <li>Each Player enters their name</li>
+              <li>Players choose the game level: Easy, Medium, or Hard</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>2. Game Start</h3>
+            <ul>
+              <li>
+                Player 1 starts the game, controlling the basket using arrow
+                keys
+              </li>
+              <li>
+                Balls begin falling from the top of the screen at random
+                positions.
+              </li>
+              <li>
+                The player moves the basket left and right to catch the balls.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>3. Game Play</h3>
+            <ul>
+              <li>The game runs for a set time(eg. 30 seconds)</li>
+              <li>Player's score increases 1 point by catching a ball.</li>
+              <li>When the timer ends, it's the next player's turn.</li>
+              <li>
+                After Player 1 finishes, the screen displays Player 2's name and
+                score.
+              </li>
+              <li>This process continues for all players.</li>
+            </ul>
+          </section>
+          <section>
+            <h3>4. Game End</h3>
+            <ul>
+              <li>
+                After all players have played, the game compares the scores and
+                highlight the winner.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>5. Levels</h3>
+            <ul>
+              <li>Game has 3 levels: Easy, Medium or Hard</li>
+              <li>Level depends on the speed of falling balls.</li>
+            </ul>
+          </section>
+        </article>
+
+        <article>
+          <h2>Game Elements(Game page)</h2>
+
+          <section>
+            <h3>1. Game Area</h3>
+            <ul>
+              <li>A container where balls fall and the basket moves.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>2. Basket</h3>
+            <ul>
+              <li>The element players control to catch falling balls.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>3. Falling Balls</h3>
+            <ul>
+              <li>
+                Multiple ball elements that fall from the top of the screen.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>4. Player Info</h3>
+            <ul>
+              <li>
+                An area to display player names and scores during the game.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>5. Timer</h3>
+            <ul>
+              <li>A visible countdown for each player's turn.</li>
+            </ul>
+          </section>
+          <section>
+            <h3>6. Control Buttons</h3>
+            <ul>
+              <li>
+                Buttons allows players to: Pause, Exist and Restart game during
+                the playing.
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <article>
+          <h2>Game Elements(Welcome page)</h2>
+
+          <section>
+            <h3>1. Game Title</h3>
+            <ul>
+              <li>Game name</li>
+              <li>Greeting worlds for players</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>2. Game Description</h3>
+            <ul>
+              <li>Game Description</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>3. User Input</h3>
+            <ul>
+              <li>Input player name</li>
+              <li>Adding player button</li>
+              <li>Level choose button</li>
+              <li>Start game button</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>4. Display players</h3>
+            <ul>
+              <li>Display the added players on the screen.</li>
+            </ul>
+          </section>
+        </article>
+
+        <article>
+          <h2>System Actions (functions)</h2>
+          <section>
+            <h3>1. Start game</h3>
+            <ul>
+              <li>Switch from "Welcome page" to the "Game page".</li>
+              <li>
+                Initializes the game for the first player based on the selected
+                difficulty.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>2. Drop balls</h3>
+            <ul>
+              <li>
+                A function that randomly generates balls at the top of the
+                screen and makes them fall at increasing speed based on the
+                difficulty level.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>3. Move basket</h3>
+            <ul>
+              <li>Tracks player input to move the basket left or right.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>4. Check for ball catch</h3>
+            <ul>
+              <li>
+                Counts when a ball has been caught by the basket and increases
+                the player's score.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>5. Switch turns</h3>
+            <ul>
+              <li>
+                Switches the game control to the next player once the current
+                player's turn is over.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>6. Update timer</h3>
+            <ul>
+              <li>
+                Displays and counts down the time remaining for each player's
+                turn.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>7. Display scores</h3>
+            <ul>
+              <li>
+                Shows the current scores of all players at the end of the game.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>8. Announce winner</h3>
+            <ul>
+              <li>
+                Compares scores at the end of the game and announces the player
+                with the highest score.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>9. Reset game</h3>
+            <ul>
+              <li>Resets all values to allow players to play again.</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+    </main>
+    <footer>&copy; Siyuan Peng - Game Plan</footer>
+  </body>
+</html>
