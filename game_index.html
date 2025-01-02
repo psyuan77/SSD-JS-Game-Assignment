@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catching Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="styles/game_style.css" />
+  </head>
+  <body>
+    <div class="container rounded-4 p-2">
+      <!-- Top info-->
+      <header class="header rounded-2">
+        <h1 class="p-4 text-center">
+          <button id="helpBtn" class="btn rounded-circle float-end">
+            <span class="fs-5">?</span>
+          </button>
+          Catching Me!
+        </h1>
+        <div id="topinfo" class="lead ms-2 mb-2">
+          Player:<span id="player_list" class="p-2">None</span>
+        </div>
+
+        <!-- Help modals -->
+        <!-- Setup modal -->
+        <div
+          class="modal fade"
+          id="setupModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title">Setup Instructions</h3>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body lead">
+                <ul>
+                  <li>Choose your desired game difficulty level.</li>
+                  <li>
+                    The difficulty level affects the speed of the falling balls.
+                  </li>
+                  <li>Aim to catch as many balls as possible!</li>
+                </ul>
+                <p class="text-danger h3 text-center mt-3">Good luck!</p>
+                <button
+                  id="closeBtn"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--game instructions modal -->
+        <div
+          class="modal fade"
+          id="gameplayModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Gameplay Instructions</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body lead">
+                <ul>
+                  <li>
+                    Use the keyboard to control the basket's movement left and
+                    right.
+                  </li>
+                  <li>Keep an eye on the timer — time is limited!</li>
+                  <li>Pause, restart, or exit the game at any time.</li>
+                </ul>
+                <p class="text-danger h3 text-center mt-3">Have fun!</p>
+                <button
+                  id="closeBtn"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Help modal ends here -->
+      </header>
+
+      <div>
+        <main>
+          <!-- Welcome screen -->
+          <section id="splashScreen" class="screen p-3">
+            <div class="text-center m-2">
+              <input
+                class="input p-2 m-1"
+                type="text"
+                id="player_name"
+                placeholder="Enter player name"
+              />
+              <select id="select" class="form-select-sm p-2">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+              <button class="btn btn-success m-1" id="join_button">Join</button>
+              <button id="startGameBtn" class="btn border-success">
+                Start Game
+              </button>
+            </div>
+            <!-- Game description -->
+            <div class="m-5">
+              <h2 class="text-start">Catching Me! - The Slam Dunk Challenge</h2>
+              <p class="fs-4">
+                Welcome to <span class="fw-bold">Catching Me!</span>, where
+                basketball meets quick reflexes and friendly competition!
+              </p>
+              <p class="fs-4">
+                In the basketball-loving land of
+                <span class="fw-bold">Dunkaria</span>, a legendary coach turned
+                catching falling balls into the ultimate test of skill: the
+                <span class="fw-bold">Slam Dunk Catching Tournament</span>.
+                Players compete to prove their speed, focus, and mastery under
+                pressure.
+              </p>
+              <p class="fs-4">
+                Now it's your turn! Take on friends, catch as many balls as you
+                can, and aim for the title of
+                <span class="fw-bold">Ultimate Catcher</span>. Grab your basket
+                and let the game begin! <span class="fw-bold">Good luck!</span>
+              </p>
+            </div>
+          </section>
+
+          <!-- Game screen -->
+          <section id="gameScreen" class="screen p-2">
+            <div class="timer-display">
+              <div id="numeric-display" class="text-center fs-4 mt-2 p-1">
+                00:00
+              </div>
+              <div
+                id="progress-bar"
+                class="progress-bar mt-2"
+                role="progressbar"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div id="gameBox" class="game-box">
+              <div id="flying-display" class="">
+                <div class="bouncy-ball"></div>
+                <div class="bouncy-ball"></div>
+                <div class="bouncy-ball"></div>
+              </div>
+              <div id="basket" class="basket"></div>
+            </div>
+            <button id="playPauseBtn" class="btn btn-secondary mt-2">
+              <i id="playPauseIcon" class="bi bi-pause-fill"></i>
+            </button>
+            <button id="restartGameBtn" class="btn btn-warning mt-2">
+              Restart
+            </button>
+            <button id="quitGameBtn" class="btn btn-warning mt-2">Quit</button>
+            <button class="btn btn-warning mt-2 exitGameBtn">Exit</button>
+          </section>
+
+          <!-- Gameover screen -->
+          <section id="gameOverScreen" class="screen text-light p-3">
+            <div id="scoreList" class="game-box"></div>
+            <button class="btn btn-warning mt-2 exitGameBtn">Exit</button>
+          </section>
+        </main>
+      </div>
+    </div>
+    <!-- Container ends here -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/game_script.js"></script>
+  </body>
+</html>
