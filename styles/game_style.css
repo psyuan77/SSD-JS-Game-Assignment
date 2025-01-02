@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/* Set a container to wrap all the content */
+.container {
+  width: 100%;
+  height: 96vh;
+  margin: 2vh auto;
+  background-color: rgba(215, 215, 215, 0.9);
+}
+
+body {
+  background-image: url(../images/main.webp);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-family: 'Sour Gummy', serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+}
+
+/* Header with player info */
+header {
+  border-bottom: 2px solid rgb(0, 0, 0);
+}
+h1,
+h2 {
+  color: rgb(243, 33, 159);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+#helpBtn {
+  width: 35px;
+  height: 35px;
+  border: 2px solid black;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#quitBtn,
+#gameScreen,
+#gameOverScreen {
+  display: none;
+}
+
+/* Game screen style */
+.timer-display {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+}
+
+#progress-bar {
+  background-color: rgb(154, 189, 136);
+  border-radius: 30px;
+  height: 30px;
+  width: 100%;
+}
+.game-box {
+  height: 60vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.bouncy-ball {
+  background-image: url(../images/basketball.png);
+  background-size: 180%;
+  background-position: 55% 60%;
+}
+.basket {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  background-image: url(../images/lankuang.png);
+  bottom: 15px;
+  background-size: 100%;
+}
+.dscore {
+  display: none;
+}
+#scoreList {
+  text-align: center;
+}
+#scoreList > div {
+  margin-bottom: 10px;
+}
